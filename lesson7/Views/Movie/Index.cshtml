@@ -1,0 +1,45 @@
+﻿@model List<lesson7.Models.Movie>
+
+<h1>Movie Catalog</h1>
+
+<form method="get" action="/Movie/Index">
+
+    <input type="text"
+           name="search"
+           placeholder="Search by title..." />
+
+    <select name="genre">
+        <option value="">All genres</option>
+        <option value="Action">Action</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+    </select>
+
+    <input type="number"
+           name="year"
+           placeholder="Year" />
+
+    <button type="submit">Search</button>
+
+</form>
+
+<hr />
+
+@foreach (var movie in Model)
+{
+    <div>
+        <h2>@movie.Title</h2>
+
+        <p>Director: @movie.Director</p>
+        <p>Genre: @movie.Genre</p>
+        <p>Year: @movie.Year</p>
+
+        <a href="/Movie/Details/@movie.Id">
+            Details
+        </a>
+    </div>
+
+    <hr />
+}
